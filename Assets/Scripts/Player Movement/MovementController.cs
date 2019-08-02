@@ -6,6 +6,8 @@ public class MovementController : MonoBehaviour {
 
     [SerializeField]
     private Movement movement;
+    [SerializeField]
+    private PlayerRotation rotation;
 
     void Update() {
         Vector2 input = new Vector2(
@@ -14,6 +16,7 @@ public class MovementController : MonoBehaviour {
         );
 
         movement.Move(input);
+        rotation.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
     }
 }

@@ -10,9 +10,12 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private float speed = 1;
 
+    [SerializeField]
+    private bool rotateLocally;
+
     public void Move(Vector2 direction) {
         var movement = direction * speed * Time.deltaTime;
-        rb.transform.Translate(movement);
+        rb.transform.position += (Vector3) movement;
     }
 
 }
