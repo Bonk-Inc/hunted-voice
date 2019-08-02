@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,9 +14,23 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private bool rotateLocally;
 
+    private bool isMoving;
+    public bool IsMoving {
+        get { return isMoving; } private set {
+            if (isMoving == value)
+                return;
+
+            isMoving = value;
+            IsMovingChaned?.Invoke(value);
+        }
+    }
+
+    public event Action<bool> IsMovingChaned;
+
     public void Move(Vector2 direction) {
+        IsMoving = direction != Vector2.zero;
         var movement = direction * speed * Time.deltaTime;
-        rb.transform.position += (Vector3) movement;
+        rb.transform.Translate(movement);
     }
 
 }
