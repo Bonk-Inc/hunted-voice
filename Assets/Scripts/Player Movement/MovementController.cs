@@ -11,13 +11,20 @@ public class MovementController : MonoBehaviour {
     private PlayerRotation rotation;
 
     void Update() {
+
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = movement.transform.position.z;
+
+        rotation.LookAt(mouseWorldPos);
+
+    }
+
+    private void FixedUpdate() {
         Vector2 input = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
         );
 
         movement.Move(input);
-        rotation.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
     }
 }

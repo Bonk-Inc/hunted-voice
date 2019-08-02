@@ -30,7 +30,9 @@ public class Movement : MonoBehaviour {
     public void Move(Vector2 direction) {
         IsMoving = direction != Vector2.zero;
         var movement = direction * speed * Time.deltaTime;
-        rb.transform.Translate(movement);
+
+        rb.AddForce(direction.normalized * speed, ForceMode2D.Force);
+        //rb.transform.position += (Vector3) movement;
     }
 
 }
