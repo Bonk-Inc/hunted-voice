@@ -1,8 +1,10 @@
 ﻿using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class CitizenInfo : MonoBehaviour {
+
     [SerializeField, Header("Character Info")]
     private string characterName;
     [SerializeField]
@@ -22,6 +24,17 @@ public class CitizenInfo : MonoBehaviour {
 
     [SerializeField, Header("Possession")]
     private CitizenStateMachine stateMachine;
+    [SerializeField]
+    private float minPossessionTime = 1f;
+    [SerializeField]
+    private float maxPossessionDistance = 3f;
+
+    [SerializeField]
+    private Canvas possessionCanvas;
+    [SerializeField]
+    private Animator demonIcon;
+    [SerializeField]
+    private Image percentageBar;
     private const string animationBool = "InScreen";
 
     public bool IsNpc { get; set; } = true;
@@ -44,10 +57,9 @@ public class CitizenInfo : MonoBehaviour {
     private void OnMouseDown() {
         if (!IsNpc || !InfoOpen)
             return;
-
+        if(CalculateDistance(this.gameObject, PlayerSingleton.Instance.CurrentPlayer) <= maxPossessionDistance)
+        StartCoroutine(PossessionCoroutine());
         StartCoroutine(DisableInfoRoutine());
-        stateMachine.SetState(CitizenStateType.Possessed);
-        PlayerSingleton.Instance.SetPlayer(this.gameObject);
     }
 
     private void EnableInfo() {
@@ -64,5 +76,36 @@ public class CitizenInfo : MonoBehaviour {
         infoFadeAnimator.SetBool(animationBool, false);
         yield return new WaitForSeconds(0.5f);
         infoCanvas.enabled = false;
+    }
+
+    private IEnumerator PossessionCoroutine() {
+        ToggleVisuals(true);
+        
+        float timeLeft = minPossessionTime;
+        bool possessionFinished = false;
+        while (Input.GetMouseButton(0) && !possessionFinished)
+        {
+            timeLeft -= Time.deltaTime;
+            if(timeLeft <= 0){
+                possessionFinished = true;
+            }
+            yield return null;
+        }
+        if(possessionFinished){
+            stateMachine.SetState(CitizenStateType.Possessed);
+            PlayerSingleton.Instance.SetPlayer(this.gameObject);
+        }
+
+        ToggleVisuals(false);
+    }
+
+    private void ToggleVisuals(bool activate){
+        possessionCanvas.enabled = activate;
+        //Toggle Music
+    }
+
+    private float CalculateDistance(GameObject currentObject, GameObject otherObject) {
+        float distance = (currentObject.transform.position - otherObject.transform.position).magnitude;
+        return distance;
     }
 }
