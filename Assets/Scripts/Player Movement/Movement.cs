@@ -25,14 +25,13 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    public float Speed { get => speed; set => speed = value; }
+
     public event Action<bool> IsMovingChaned;
 
     public void Move(Vector2 direction) {
         IsMoving = direction != Vector2.zero;
-        var movement = direction * speed * Time.deltaTime;
-
         rb.AddForce(direction.normalized * speed, ForceMode2D.Force);
-        //rb.transform.position += (Vector3) movement;
     }
 
 }
