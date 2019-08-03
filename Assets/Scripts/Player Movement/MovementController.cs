@@ -13,6 +13,8 @@ public class MovementController : MonoBehaviour {
     [SerializeField]
     private float runSpeedMultiplier = 2;
 
+    public bool IsRunning { get; private set; }
+
     void Update() {
 
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -20,11 +22,15 @@ public class MovementController : MonoBehaviour {
 
         rotation.LookAt(mouseWorldPos);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
             movement.Speed *= runSpeedMultiplier;
+            IsRunning = true;
+        }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
             movement.Speed /= runSpeedMultiplier;
+            IsRunning = false;
+        }
 
     }
 

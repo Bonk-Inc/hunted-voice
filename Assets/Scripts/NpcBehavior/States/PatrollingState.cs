@@ -12,10 +12,18 @@ public class PatrollingState : CitizenState {
     [SerializeField]
     private NavMeshAgent agent;
 
+    [SerializeField]
+    private SuspicionMeter suspision;
+
     private int currentDestination = 0;
 
     public override void EnterState() {
+        suspision.StartWatching();
         SetDestination();
+    }
+
+    public override void LeaveState() {
+        suspision.StopWatching();
     }
 
     public override void UpdateState() {

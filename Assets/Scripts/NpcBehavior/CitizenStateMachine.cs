@@ -10,7 +10,7 @@ public class CitizenStateMachine : StateMachine<CitizenStateType> {
     [SerializeField]
     private CitizenStateType initialState;
 
-    protected void Awake() {
+    protected void Start() {
         foreach (var state in initialStates) {
             AddState(state.StateName, state);
         }
