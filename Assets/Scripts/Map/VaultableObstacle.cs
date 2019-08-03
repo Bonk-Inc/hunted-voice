@@ -31,7 +31,7 @@ public class VaultableObstacle : MonoBehaviour {
         var endpos = side;
         var totalVaultTime = vaultTime;
         while (vaultTime > 0) {
-            obj.transform.position = Vector2.Lerp(endpos, startpos, 1 / totalVaultTime * vaultTime);
+            obj.transform.position = Vector3.Lerp(endpos, startpos, 1 / totalVaultTime * vaultTime);
             vaultTime -= Time.deltaTime;
             yield return null;
         }
@@ -40,9 +40,9 @@ public class VaultableObstacle : MonoBehaviour {
     private void OnDrawGizmos() {
         if (!drawGizmos)
             return;
-
-        Gizmos.DrawSphere(transform.position + sideOne, 0.03f);
-        Gizmos.DrawSphere(transform.position + sideTwo, 0.03f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + sideOne, 0.2f);
+        Gizmos.DrawSphere(transform.position + sideTwo, 0.2f);
     }
 
 }

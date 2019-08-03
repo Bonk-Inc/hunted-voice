@@ -14,7 +14,7 @@ public class PlayerVault : MonoBehaviour {
     [SerializeField]
     private UnityEvent VaultStarted, VaultStopped;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag(VaultableTag))
             return;
 
@@ -22,7 +22,7 @@ public class PlayerVault : MonoBehaviour {
         CanVault = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit(Collider other) {
         if (!other.CompareTag(VaultableTag))
             return;
 

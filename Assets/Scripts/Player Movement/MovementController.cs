@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour {
     void Update() {
 
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = movement.transform.position.z;
+        mouseWorldPos.y = movement.transform.position.y;
 
         rotation.LookAt(mouseWorldPos);
 
@@ -29,8 +29,9 @@ public class MovementController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        Vector2 input = new Vector2(
+        Vector3 input = new Vector3(
             Input.GetAxisRaw("Horizontal"),
+            0,
             Input.GetAxisRaw("Vertical")
         );
 

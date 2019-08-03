@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour {
 
     private void LateUpdate() {
         var target = obj.transform.position;
-        target.z = transform.position.z;
+        target.y = transform.position.y;
         var direction = target - transform.position;
         var distance = direction.magnitude;
 

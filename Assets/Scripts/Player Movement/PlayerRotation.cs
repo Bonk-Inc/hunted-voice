@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour {
 
     [SerializeField]
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
-    public void LookAt(Vector2 position) {
-        var direction = position - (Vector2) transform.position;
-        var angle = Vector2.SignedAngle(Vector2.up, direction);
-        rb.transform.rotation = Quaternion.Euler(0, 0, angle);
+    public void LookAt(Vector3 position) {
+        var direction = position - transform.position;
+        direction.y = 0;
+        var angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
+        rb.transform.rotation = Quaternion.Euler(90, angle, rb.transform.rotation.z);
     }
 
 }
