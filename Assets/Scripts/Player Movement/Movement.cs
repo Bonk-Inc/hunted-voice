@@ -11,9 +11,6 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private float speed = 1;
 
-    [SerializeField]
-    private bool rotateLocally;
-
     private bool isMoving;
     public bool IsMoving {
         get { return isMoving; } private set {

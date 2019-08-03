@@ -15,18 +15,18 @@ public class PatrollingState : CitizenState {
     private int currentDestination = 0;
 
     public override void EnterState() {
-        SetPath();
+        SetDestination();
     }
 
     public override void UpdateState() {
         if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance < 0.3f) {
             currentDestination++;
             currentDestination = (int) Mathf.Repeat((float) currentDestination, (float) path.Length - 1);
-            SetPath();
+            SetDestination();
         }
     }
 
-    private void SetPath() {
+    private void SetDestination() {
         agent.destination = path[currentDestination].position;
     }
 

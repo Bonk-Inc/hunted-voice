@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class PlayerVault : MonoBehaviour {
 
+    [SerializeField]
+    private GameObject player;
+
     private GameObject vaultableObject;
 
     public bool CanVault { get; private set; }
@@ -47,7 +50,7 @@ public class PlayerVault : MonoBehaviour {
             return;
         }
 
-        obstacle.Vault(transform.parent.gameObject, 0.2f);
+        obstacle.Vault(player, 0.2f);
     }
 
 }

@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d162a18fd2cdcc94888308a33c6d97c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1462877044}
+  obj: {fileID: 537930792}
   speed: 6
 --- !u!1 &164067179
 GameObject:
@@ -954,6 +954,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &537930792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1140406967475713450, guid: 77c0ba3f9c1a70844aabb03bfe8ac946,
+    type: 3}
+  m_PrefabInstance: {fileID: 43833605880478451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711827161
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,8 +1005,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1023373779}
   - component: {fileID: 1023373780}
-  - component: {fileID: 1023373782}
-  - component: {fileID: 1023373781}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -1071,34 +1075,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1023373781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023373778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4c5f7b9d157474a8b197f0036c6d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: []
-  agent: {fileID: 1179146102}
---- !u!114 &1023373782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023373778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5afefcaf3dc38834daed5321b17b1a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialStates:
-  - {fileID: 1023373781}
 --- !u!1 &1143730460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1462877043
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1527,7 +1503,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1462877053}
   speed: 60
-  rotateLocally: 1
 --- !u!114 &1462877047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: npc 3D nav
       objectReference: {fileID: 0}
+    - target: {fileID: 43833605932920229, guid: 77c0ba3f9c1a70844aabb03bfe8ac946,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 43833605932920234, guid: 77c0ba3f9c1a70844aabb03bfe8ac946,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2325,5 +2305,10 @@ PrefabInstance:
       propertyPath: path.Array.data[3]
       value: 
       objectReference: {fileID: 2047639045}
+    - target: {fileID: 456983504576664789, guid: 77c0ba3f9c1a70844aabb03bfe8ac946,
+        type: 3}
+      propertyPath: initialState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c0ba3f9c1a70844aabb03bfe8ac946, type: 3}

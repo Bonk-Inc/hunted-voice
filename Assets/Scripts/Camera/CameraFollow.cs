@@ -20,4 +20,8 @@ public class CameraFollow : MonoBehaviour {
         transform.position = smoothPos;
     }
 
+    public void ChangeTarget(GameObject newTarget) {
+        obj = newTarget.transform;
+    }
+
 }
