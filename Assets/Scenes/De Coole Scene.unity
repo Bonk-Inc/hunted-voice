@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1462877046}
   rotation: {fileID: 1462877048}
+  runSpeedMultiplier: 1.7
 --- !u!114 &1462877048
 MonoBehaviour:
   m_ObjectHideFlags: 0

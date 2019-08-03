@@ -25,6 +25,8 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    public float Speed { get => speed; set => speed = value; }
+
     public event Action<bool> IsMovingChaned;
 
     public void Move(Vector2 direction) {
