@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4714493670357541841}
   - component: {fileID: 8288526405613856086}
   - component: {fileID: 9206468605834778543}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1101183394409408846}
   - component: {fileID: 1101183394409408840}
   - component: {fileID: 1101183394409408841}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Age
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1101183394516583619}
   - component: {fileID: 1101183394516583616}
   - component: {fileID: 2796509409662845027}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: NPC Info Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101183394715840661}
   - component: {fileID: 1101183394715840660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: foot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 1101183395767397000}
   - component: {fileID: 1101183395767397006}
   - component: {fileID: 1101183395767397007}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Npctje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,7 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101183395803536087}
   - component: {fileID: 1101183395803536086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 1101183395866856349}
   - component: {fileID: 1101183395866856351}
   - component: {fileID: 1101183395866856348}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Control Percentage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 1101183395982390284}
   - component: {fileID: 1101183395982390286}
   - component: {fileID: 1101183395982390287}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Control Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 1101183396153888881}
   - component: {fileID: 1101183396153888883}
   - component: {fileID: 1101183396153888880}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101183396471210470}
   - component: {fileID: 1101183396471210465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: foot 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

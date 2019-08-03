@@ -2,7 +2,7 @@
 using TMPro;
 using System.Collections;
 
-public class Citizen : MonoBehaviour
+public class CitizenInfo : MonoBehaviour
 {
     [SerializeField, Header("Character Info")]
     private string characterName;
@@ -31,7 +31,6 @@ public class Citizen : MonoBehaviour
     }
 
     private void EnableInfo(){
-        print("yum");
         infoCanvas.enabled = true;
         infoFadeAnimator.SetBool(animationBool, true);
 

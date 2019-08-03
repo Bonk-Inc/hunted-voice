@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPossession : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class PlayerPossession : MonoBehaviour {
+    
+    private MapController mapController;
+
+    private void start(){
+        mapController = MapController.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnMouseOver(){
+
     }
 }
