@@ -7,13 +7,27 @@ public class PatrollingState : CitizenState {
     public override CitizenStateType StateName => CitizenStateType.Patrolling;
 
     [SerializeField]
-    private Transform destination;
+    private Transform[] path;
 
     [SerializeField]
-    private NavMeshAgent navMesh;
+    private NavMeshAgent agent;
+
+    private int currentDestination = 0;
 
     public override void EnterState() {
-        navMesh.destination = destination.position;
+        SetPath();
+    }
+
+    public override void UpdateState() {
+        if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance < 0.3f) {
+            currentDestination++;
+            currentDestination = (int) Mathf.Repeat((float) currentDestination, (float) path.Length - 1);
+            SetPath();
+        }
+    }
+
+    private void SetPath() {
+        agent.destination = path[currentDestination].position;
     }
 
 }
