@@ -11,6 +11,8 @@ public class MapController : MonoBehaviour
     //Todo change when there is a player class
     private GameObject currentPlayer;
 
+    public GameObject CurrentPlayer{get{return currentPlayer;} set{currentPlayer = value;}}
+
     private void Awake()
     {
         if(!instance)
