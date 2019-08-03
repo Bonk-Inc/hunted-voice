@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using TMPro;
-using System.Collections;
 
-public class CitizenInfo : MonoBehaviour
-{
+public class CitizenInfo : MonoBehaviour {
     [SerializeField, Header("Character Info")]
     private string characterName;
     [SerializeField]
@@ -20,17 +19,39 @@ public class CitizenInfo : MonoBehaviour
     private Animator infoFadeAnimator;
     [SerializeField]
     private Canvas infoCanvas;
+
+    [SerializeField, Header("Possession")]
+    private CitizenStateMachine stateMachine;
     private const string animationBool = "InScreen";
 
-    private void OnMouseEnter(){
+    public bool IsNpc { get; set; } = true;
+    public bool InfoOpen { get; private set; } = false;
+
+    private void OnMouseEnter() {
+        if (!IsNpc)
+            return;
+
         EnableInfo();
     }
 
-    private void OnMouseExit(){
+    private void OnMouseExit() {
+        if (!IsNpc)
+            return;
+
         StartCoroutine(DisableInfoRoutine());
     }
 
-    private void EnableInfo(){
+    private void OnMouseDown() {
+        if (!IsNpc || !InfoOpen)
+            return;
+
+        StartCoroutine(DisableInfoRoutine());
+        stateMachine.SetState(CitizenStateType.Possessed);
+        PlayerSingleton.Instance.SetPlayer(this.gameObject);
+    }
+
+    private void EnableInfo() {
+        InfoOpen = true;
         infoCanvas.enabled = true;
         infoFadeAnimator.SetBool(animationBool, true);
 
@@ -38,7 +59,8 @@ public class CitizenInfo : MonoBehaviour
         ageText.text = "Age: " + characterAge.ToString();
     }
 
-    private IEnumerator DisableInfoRoutine(){
+    private IEnumerator DisableInfoRoutine() {
+        InfoOpen = false;
         infoFadeAnimator.SetBool(animationBool, false);
         yield return new WaitForSeconds(0.5f);
         infoCanvas.enabled = false;

@@ -6,13 +6,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     [SerializeField]
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
     [SerializeField]
     private float speed = 1;
-
-    [SerializeField]
-    private bool rotateLocally;
 
     private bool isMoving;
     public bool IsMoving {
@@ -29,9 +26,9 @@ public class Movement : MonoBehaviour {
 
     public event Action<bool> IsMovingChaned;
 
-    public void Move(Vector2 direction) {
-        IsMoving = direction != Vector2.zero;
-        rb.AddForce(direction.normalized * speed, ForceMode2D.Force);
+    public void Move(Vector3 direction) {
+        IsMoving = direction != Vector3.zero;
+        rb.AddForce(direction.normalized * speed, ForceMode.Force);
     }
 
 }
