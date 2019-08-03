@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &346126628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1462877043
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1074,6 +1074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Npctje
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101183395767397004, guid: 7c2eae80d88424746bf49ef4ee4c3709,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1101183395767397041, guid: 7c2eae80d88424746bf49ef4ee4c3709,
         type: 3}
