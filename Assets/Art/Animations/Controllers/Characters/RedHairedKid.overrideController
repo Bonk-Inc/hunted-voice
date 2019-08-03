@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RedHairedKid
+  m_Controller: {fileID: 9100000, guid: ca4adbd7b3fbf4c4e94843631156cac1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: eb1b9a758f8ace647b869eca038c94ce, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 83908842c4d49dc4284f449bdb7f7554, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dc01e435ee9574b4694f4ea1a5950f72, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 35491d5aff2ef7743940ccbc2e55c238, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9df2dbead614cf5449e4acfe3e9ee0ca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9a832545328bf9a499c6800b711ae61f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e1b5320781a7ff6488dc2f4fffd42c30, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8a03ecc2779ee984684a35d9f8d5a99f, type: 2}
