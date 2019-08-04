@@ -7,7 +7,6 @@ public class SearchingState : HunterState
     public override HunterStateType StateName => HunterStateType.Searching;
     private Coroutine watchRoutine;
 
-    [SerializeField]
     private Transform[] waypoints;
 
     public override void EnterState(){
@@ -15,7 +14,7 @@ public class SearchingState : HunterState
         BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.Chased);
         watchRoutine = StartCoroutine(WatchForTarget());
 
-        //waypoints = add function
+        waypoints = hunterRegionInfo.Region.GetWaypoints();
     }
 
     public override void ChangeRegion(ObjectRegionInfo objectRegionInfo){

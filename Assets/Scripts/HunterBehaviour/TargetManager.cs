@@ -13,6 +13,10 @@ public class TargetManager : MonoBehaviour
     public GameObject CurrentTarget{get{return currentTarget;} 
     set{ChangeTarget(value);}}
 
+    private void Start(){
+        currentTarget = PlayerSingleton.Instance.CurrentPlayer;
+    }
+    
     public Region GetCurrentLocation(){
         return RetrieveObjectRegionInfo().Region;
     }
