@@ -56,7 +56,7 @@ public class CitizenInfo : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        if (!IsNpc || !InfoOpen)
+        if (!IsNpc)
             return;
         if (CalculateDistance(this.gameObject, PlayerSingleton.Instance.CurrentPlayer) <= maxPossessionDistance)
             StartCoroutine(PossessionCoroutine());
@@ -83,7 +83,6 @@ public class CitizenInfo : MonoBehaviour {
         var previousSound = BackgroundSoundHandler.Instance.CurrentBackgroundSound;
         ToggleVisuals(true);
         IsBeingPossessed = true;
-        print("asdasdas");
         float timeLeft = minPossessionTime;
         bool possessionFinished = false;
         while (Input.GetMouseButton(0) && !possessionFinished) {
