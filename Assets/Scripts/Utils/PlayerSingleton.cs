@@ -17,6 +17,8 @@ public class PlayerSingleton : MonoBehaviour {
 
     public PlayerChangedEvent PlayerChanged;
 
+    public System.Action<GameObject, GameObject> OnPlayerChanged;
+
     private void Awake() {
         if (instance != null) {
             Debug.LogError("Double singleton! removing!");
@@ -28,7 +30,7 @@ public class PlayerSingleton : MonoBehaviour {
     public void SetPlayer(GameObject newPlayer) {
         var statemachine = currentPlayer.GetComponent<CitizenStateMachine>();
         statemachine.SetState(CitizenStateType.Patrolling);
-
+        OnPlayerChanged?.Invoke(currentPlayer, newPlayer);
         currentPlayer = newPlayer;
         PlayerChanged?.Invoke(newPlayer);
     }

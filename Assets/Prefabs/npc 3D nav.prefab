@@ -668,6 +668,7 @@ Transform:
   m_Children:
   - {fileID: 4314066926386676024}
   - {fileID: 3433092115145853106}
+  - {fileID: 2569550434418891321}
   m_Father: {fileID: 3897512754305151290}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,11 +684,13 @@ GameObject:
   - component: {fileID: 3897512754305151291}
   - component: {fileID: 3897512754305151284}
   - component: {fileID: 3520281425288087621}
+  - component: {fileID: 3118545990300952980}
   - component: {fileID: 6445476951470442489}
   - component: {fileID: 3424207419582119273}
   - component: {fileID: 4058277739140623537}
   - component: {fileID: 2777629817610218112}
-  m_Layer: 0
+  - component: {fileID: 4788662018410509413}
+  m_Layer: 8
   m_Name: npc 3D nav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +776,31 @@ MonoBehaviour:
   initialStates:
   - {fileID: 2567318371498830037}
   - {fileID: 2943105799965654757}
+  - {fileID: 481525715812223861}
   initialState: 0
+--- !u!114 &3118545990300952980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897512754305151285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9815f2f4bc8959439f30ee6896e1d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAngle: 40
+  viewRadius: 5
+  target:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacle:
+    serializedVersion: 2
+    m_Bits: 5
+  drawGizmos: 0
+  drawLines: 1
+  drawSphere: 1
 --- !u!114 &6445476951470442489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +872,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.50540483, y: 0.16000004, z: 0.22723389}
   m_Center: {x: -0.0047935396, y: 0, z: 0.004673004}
+--- !u!114 &4788662018410509413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897512754305151285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf4c5931eb35ab449f157802315840b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineOfSight: {fileID: 3118545990300952980}
+  LosCheckDistance: 0
+  runWatchSuspicion: 60
+  suspicionDistance: 0.5
+  distanceSuspicion: 30
+  maxSuspicion: 100
+  drawGizmos: 0
+  stateMachine: {fileID: 3520281425288087621}
 --- !u!1 &5495701162009209733
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +986,52 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  agent: {fileID: 3424207419582119273}
+  suspision: {fileID: 4788662018410509413}
+--- !u!1 &7147412075977113904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2569550434418891321}
+  - component: {fileID: 481525715812223861}
+  m_Layer: 8
+  m_Name: Traveling To Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2569550434418891321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147412075977113904}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1148656018522146607}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481525715812223861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147412075977113904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974d4a07035e2a5499b6b7e658edaee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunterSummonPoint: {fileID: 0}
   agent: {fileID: 3424207419582119273}
 --- !u!1 &7442558187225924114
 GameObject:
