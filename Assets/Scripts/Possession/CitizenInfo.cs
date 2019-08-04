@@ -86,16 +86,22 @@ public class CitizenInfo : MonoBehaviour {
         bool possessionFinished = false;
         while (Input.GetMouseButton(0) && !possessionFinished)
         {
+            float percentage = 1 / minPossessionTime * timeLeft;
             timeLeft -= Time.deltaTime;
             if(timeLeft <= 0){
+                percentage = 0;
                 possessionFinished = true;
             }
+            percentageBar.fillAmount = 1 - percentage;
+
             yield return null;
         }
         if(possessionFinished){
             stateMachine.SetState(CitizenStateType.Possessed);
             PlayerSingleton.Instance.SetPlayer(this.gameObject);
+            yield return new WaitForSeconds(2f);
         }
+                
         ToggleVisuals(false, previousSound);
     }
 
