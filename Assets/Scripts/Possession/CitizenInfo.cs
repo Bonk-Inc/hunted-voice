@@ -79,6 +79,7 @@ public class CitizenInfo : MonoBehaviour {
     }
 
     private IEnumerator PossessionCoroutine() {
+        var previousSound = BackgroundSoundHandler.Instance.CurrentBackgroundSound;
         ToggleVisuals(true);
         
         float timeLeft = minPossessionTime;
@@ -95,13 +96,12 @@ public class CitizenInfo : MonoBehaviour {
             stateMachine.SetState(CitizenStateType.Possessed);
             PlayerSingleton.Instance.SetPlayer(this.gameObject);
         }
-
-        ToggleVisuals(false);
+        ToggleVisuals(false, previousSound);
     }
 
-    private void ToggleVisuals(bool activate){
+    private void ToggleVisuals(bool activate, BackGroundSounds sound = BackGroundSounds.Choir){
         possessionCanvas.enabled = activate;
-        //Toggle Music
+        BackgroundSoundHandler.Instance.ChangeMusic(sound);
     }
 
     private float CalculateDistance(GameObject currentObject, GameObject otherObject) {
