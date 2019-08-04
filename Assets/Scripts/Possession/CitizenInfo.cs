@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CitizenInfo : MonoBehaviour {
 
@@ -39,6 +39,7 @@ public class CitizenInfo : MonoBehaviour {
 
     public bool IsNpc { get; set; } = true;
     public bool InfoOpen { get; private set; } = false;
+    public bool IsBeingPossessed { get; private set; } = false;
 
     private void OnMouseEnter() {
         if (!IsNpc)
@@ -57,8 +58,8 @@ public class CitizenInfo : MonoBehaviour {
     private void OnMouseDown() {
         if (!IsNpc || !InfoOpen)
             return;
-        if(CalculateDistance(this.gameObject, PlayerSingleton.Instance.CurrentPlayer) <= maxPossessionDistance)
-        StartCoroutine(PossessionCoroutine());
+        if (CalculateDistance(this.gameObject, PlayerSingleton.Instance.CurrentPlayer) <= maxPossessionDistance)
+            StartCoroutine(PossessionCoroutine());
         StartCoroutine(DisableInfoRoutine());
     }
 
@@ -81,14 +82,14 @@ public class CitizenInfo : MonoBehaviour {
     private IEnumerator PossessionCoroutine() {
         var previousSound = BackgroundSoundHandler.Instance.CurrentBackgroundSound;
         ToggleVisuals(true);
-        
+        IsBeingPossessed = true;
+        print("asdasdas");
         float timeLeft = minPossessionTime;
         bool possessionFinished = false;
-        while (Input.GetMouseButton(0) && !possessionFinished)
-        {
+        while (Input.GetMouseButton(0) && !possessionFinished) {
             float percentage = 1 / minPossessionTime * timeLeft;
             timeLeft -= Time.deltaTime;
-            if(timeLeft <= 0){
+            if (timeLeft <= 0) {
                 percentage = 0;
                 possessionFinished = true;
             }
@@ -96,16 +97,16 @@ public class CitizenInfo : MonoBehaviour {
 
             yield return null;
         }
-        if(possessionFinished){
+        if (possessionFinished) {
             stateMachine.SetState(CitizenStateType.Possessed);
             PlayerSingleton.Instance.SetPlayer(this.gameObject);
             yield return new WaitForSeconds(2f);
         }
-                
+        IsBeingPossessed = false;
         ToggleVisuals(false, previousSound);
     }
 
-    private void ToggleVisuals(bool activate, BackGroundSounds sound = BackGroundSounds.Choir){
+    private void ToggleVisuals(bool activate, BackGroundSounds sound = BackGroundSounds.Choir) {
         possessionCanvas.enabled = activate;
         BackgroundSoundHandler.Instance.ChangeMusic(sound);
     }
