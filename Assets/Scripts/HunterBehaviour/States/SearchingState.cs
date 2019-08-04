@@ -1,18 +1,20 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchingState : MonoBehaviour
+public class SearchingState : HunterState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public override HunterStateType StateName => HunterStateType.Searching;
+
+    public override void EnterState(){
+        targetManager.RetrieveObjectRegionInfo().OnRegionChanged += ChangeRegion;
+        BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.Chased);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void ChangeRegion(ObjectRegionInfo objectRegionInfo){
+        if(hunterRegionInfo != objectRegionInfo){
+            BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.Normal);
+            StateMachine.SetState(HunterStateType.Traveling);
+        }
     }
 }

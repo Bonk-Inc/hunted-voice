@@ -19,4 +19,6 @@ where EnumType : System.Enum {
     public virtual void Reason() { }
     public virtual void LeaveState() { }
 
+    public virtual void ChangeRegion(ObjectRegionInfo objectRegionInfo){}
+
 }

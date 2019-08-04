@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 8466524026879513643}
   - component: {fileID: 2381724726950038378}
   - component: {fileID: 2484217698212034941}
+  - component: {fileID: 4230275469822716974}
   m_Layer: 8
   m_Name: RedKid 3D nav
   m_TagString: Untagged
@@ -818,6 +819,18 @@ MonoBehaviour:
   maxSuspicion: 100
   drawGizmos: 0
   stateMachine: {fileID: 8890472751908195353}
+--- !u!114 &4230275469822716974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643569029767424855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cacb50c561ff8248b3cf8ce1dbea82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2691716380567281885
 GameObject:
   m_ObjectHideFlags: 0

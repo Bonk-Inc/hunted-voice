@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class TravelingState : MonoBehaviour
+public class TravelingState : HunterState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public override HunterStateType StateName => HunterStateType.Traveling;
 
-    // Update is called once per frame
-    void Update()
-    {
+    public override void EnterState(){
+        agent.SetDestination(targetManager.GetCurrentLocation().transform.position);
+    } 
+
+    public override void UpdateState() {
+        if (agent.remainingDistance != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0) {
+            StateMachine.SetState(HunterStateType.Searching);
+        }
         
     }
 }
