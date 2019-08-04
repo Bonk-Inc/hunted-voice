@@ -14,5 +14,6 @@ public abstract class HunterState : State<HunterStateType>
     [SerializeField]
     protected NavMeshAgent agent;
 
-    
+    [SerializeField]
+    protected LineOfSight lineOfSight;
 }
