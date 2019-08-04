@@ -80,6 +80,7 @@ public class SuspicionMeter : MonoBehaviour {
     }
 
     private IEnumerator WatchDistanceToPlayer() {
+        yield return null;
         while (true) {
             if ((currentPlayer.transform.position - transform.position).magnitude < suspicionDistance)
                 suspicion += distanceSuspicion * Time.deltaTime;
@@ -89,6 +90,7 @@ public class SuspicionMeter : MonoBehaviour {
     }
 
     private IEnumerator WatchForPlayer() {
+        yield return null;
         while (true) {
 
             while ((currentPlayer.transform.position - transform.position).magnitude < LosCheckDistance) {
