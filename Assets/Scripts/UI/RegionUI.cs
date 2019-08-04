@@ -28,12 +28,10 @@ public class RegionUI : MonoBehaviour {
     }
 
     private void UpdatePlayerRegionInfo() {
-        print("new Player");
         var regionInfo = PlayerSingleton.Instance.CurrentPlayer.GetComponent<ObjectRegionInfo>();
         if (regionInfo == playerRegionInfo)
             return;
 
-        print("different Player");
         if (playerRegionInfo)
             playerRegionInfo.OnRegionChanged -= UpdateRegion;
 
