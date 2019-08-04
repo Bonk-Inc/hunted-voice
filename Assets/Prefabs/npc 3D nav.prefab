@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 4058277739140623537}
   - component: {fileID: 2777629817610218112}
   - component: {fileID: 4788662018410509413}
+  - component: {fileID: 2419101873701169897}
   m_Layer: 8
   m_Name: npc 3D nav
   m_TagString: Untagged
@@ -821,6 +822,11 @@ MonoBehaviour:
   infoFadeAnimator: {fileID: 1789836238816492301}
   infoCanvas: {fileID: 6076096243718846959}
   stateMachine: {fileID: 3520281425288087621}
+  minPossessionTime: 1
+  maxPossessionDistance: 3
+  possessionCanvas: {fileID: 0}
+  demonIcon: {fileID: 0}
+  percentageBar: {fileID: 0}
 --- !u!195 &3424207419582119273
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -870,8 +876,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.50540483, y: 0.16000004, z: 0.22723389}
-  m_Center: {x: -0.0047935396, y: 0, z: 0.004673004}
+  m_Size: {x: 0.50540483, y: 5.009472, z: 0.22723389}
+  m_Center: {x: -0.0047935247, y: 2.424736, z: 0.004673004}
 --- !u!114 &4788662018410509413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,6 +898,18 @@ MonoBehaviour:
   maxSuspicion: 100
   drawGizmos: 0
   stateMachine: {fileID: 3520281425288087621}
+--- !u!114 &2419101873701169897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897512754305151285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cacb50c561ff8248b3cf8ce1dbea82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5495701162009209733
 GameObject:
   m_ObjectHideFlags: 0
