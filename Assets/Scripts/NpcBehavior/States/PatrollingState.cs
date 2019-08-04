@@ -15,18 +15,30 @@ public class PatrollingState : CitizenState {
     [SerializeField]
     private SuspicionMeter suspision;
 
+    [SerializeField]
+    private CitizenInfo info;
+
     private int currentDestination = 0;
+    private bool wasBeingpossessed = false;
 
     public override void EnterState() {
-        suspision.StartWatching();
+        //suspision.StartWatching();
         SetDestination();
     }
 
     public override void LeaveState() {
-        suspision.StopWatching();
+        //suspision.StopWatching();
     }
 
     public override void UpdateState() {
+        if (info.IsBeingPossessed && !wasBeingpossessed) {
+            agent.isStopped = true;
+        } else if (!info.IsBeingPossessed && wasBeingpossessed) {
+            SetDestination();
+        }
+
+        wasBeingpossessed = info.IsBeingPossessed;
+
         if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance < 0.3f) {
             currentDestination++;
             currentDestination = (int) Mathf.Clamp((int) Mathf.Repeat((float) currentDestination, (float) path.Length - 1), 0, Mathf.Infinity);
