@@ -24,7 +24,9 @@ public class HuntingState : HunterState
                 BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.GameOver);
                 return;
             }
-            //targetManager.CurrentTarget = 
+            var oldTarget = targetManager.CurrentTarget;
+            targetManager.CurrentTarget = targetManager.GetNewTarget(); 
+            Destroy(oldTarget);
 
             BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.Normal);
             StateMachine.SetState(HunterStateType.Traveling);

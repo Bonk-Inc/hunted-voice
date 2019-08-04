@@ -28,6 +28,10 @@ public class TargetManager : MonoBehaviour
         return isNpc;
     }
 
+    public GameObject GetNewTarget(){
+        return citizenInfo.NewTarget;
+    }
+
     private void ChangeTarget(GameObject newtarget){
         currentTarget = newtarget;
         citizenInfo = newtarget.GetComponent<CitizenInfo>();

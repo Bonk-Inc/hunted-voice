@@ -37,6 +37,10 @@ public class CitizenInfo : MonoBehaviour {
     private Image percentageBar;
     private const string animationBool = "InScreen";
 
+    private GameObject newTarget;
+
+    public GameObject NewTarget{get{return newTarget;} set{newTarget = value;}}
+
     public bool IsNpc { get; set; } = true;
     public bool InfoOpen { get; private set; } = false;
 
@@ -97,6 +101,9 @@ public class CitizenInfo : MonoBehaviour {
             yield return null;
         }
         if(possessionFinished){
+            CitizenInfo info = PlayerSingleton.Instance.CurrentPlayer.GetComponent<CitizenInfo>();
+            info.SetNewTarget(this.gameObject);
+
             stateMachine.SetState(CitizenStateType.Possessed);
             PlayerSingleton.Instance.SetPlayer(this.gameObject);
             yield return new WaitForSeconds(2f);
@@ -113,5 +120,9 @@ public class CitizenInfo : MonoBehaviour {
     private float CalculateDistance(GameObject currentObject, GameObject otherObject) {
         float distance = (currentObject.transform.position - otherObject.transform.position).magnitude;
         return distance;
+    }
+
+    public void SetNewTarget(GameObject target){
+        newTarget = target;
     }
 }
