@@ -30,8 +30,9 @@ public class PlayerSingleton : MonoBehaviour {
     public void SetPlayer(GameObject newPlayer) {
         var statemachine = currentPlayer.GetComponent<CitizenStateMachine>();
         statemachine.SetState(CitizenStateType.Patrolling);
-        OnPlayerChanged?.Invoke(currentPlayer, newPlayer);
+        var oldPlayer = currentPlayer;
         currentPlayer = newPlayer;
+        OnPlayerChanged?.Invoke(oldPlayer, newPlayer);
         PlayerChanged?.Invoke(newPlayer);
     }
 
