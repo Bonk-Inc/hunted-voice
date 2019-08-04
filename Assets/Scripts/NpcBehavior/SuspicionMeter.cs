@@ -31,16 +31,32 @@ public class SuspicionMeter : MonoBehaviour {
 
     private GameObject currentPlayer;
 
+    private bool isWatching = false;
+
     private void Start() {
         currentPlayer = PlayerSingleton.Instance.CurrentPlayer;
 
         PlayerSingleton.Instance.PlayerChanged.AddListener((newPlayer) => {
             currentPlayer = newPlayer;
         });
+
+        PlayerSingleton.Instance.OnPlayerChanged += (oldPlayer, newPlayer) => {
+            if (!isWatching || oldPlayer == gameObject || newPlayer == gameObject) {
+                suspicion = 0;
+                return;
+            }
+
+            if (lineOfSight.IsObjectInView(oldPlayer) || lineOfSight.IsObjectInView(newPlayer)) {
+                suspicion = maxSuspicion + 1;
+                return;
+            }
+
+            suspicion = 0;
+        };
     }
 
     public void StartWatching() {
-        print(name + " yeeehaaww");
+        isWatching = true;
         StartCoroutine(WatchForPlayer());
         StartCoroutine(WatchDistanceToPlayer());
 
@@ -48,7 +64,7 @@ public class SuspicionMeter : MonoBehaviour {
     }
 
     public void StopWatching() {
-        print(name + " yeeeh..  aahh");
+        isWatching = false;
         StopAllCoroutines();
         suspicion = 0;
     }

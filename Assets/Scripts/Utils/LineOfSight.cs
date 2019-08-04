@@ -47,6 +47,10 @@ public class LineOfSight : MonoBehaviour {
     }
 
     public bool IsObjectInView(GameObject obj) {
+
+        if ((obj.transform.position - transform.position).magnitude > viewRadius)
+            return false;
+
         RaycastHit ray;
 
         if (!Physics.Raycast(transform.position, obj.transform.position - transform.position, out ray, Mathf.Infinity, obstacle + target))
