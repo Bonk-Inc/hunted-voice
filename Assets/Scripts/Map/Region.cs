@@ -13,6 +13,8 @@ public class Region : MonoBehaviour {
     private List<string> tags;
     [SerializeField]
     private bool blacklistTags = true;
+    [SerializeField]
+    private Transform[] waypoints;
 
     private List<GameObject> currentObjects = new List<GameObject>();
 
@@ -30,6 +32,10 @@ public class Region : MonoBehaviour {
 
     private void Awake() {
         Collider = GetComponent<Collider>();
+    }
+
+    public Transform[] GetWaypoints() {
+        return waypoints;
     }
 
     public bool IsInRegion(GameObject obj) {
