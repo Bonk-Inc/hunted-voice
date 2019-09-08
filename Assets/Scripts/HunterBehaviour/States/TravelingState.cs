@@ -9,13 +9,14 @@ public class TravelingState : HunterState
     private Coroutine watchRoutine;
 
     public override void EnterState(){
-        agent.SetDestination(targetManager.GetCurrentLocation().transform.position);
+
+        agent.SetDestination(targetManager.GetCurrentLocation().GetWaypoints()[0].position);
         watchRoutine = StartCoroutine(WatchForTarget());
     } 
     public override void ChangeRegion(ObjectRegionInfo objectRegionInfo){
         if(hunterRegionInfo.Region != objectRegionInfo.Region){
             BackgroundSoundHandler.Instance.ChangeMusic(BackGroundSounds.Normal);
-            agent.SetDestination(targetManager.GetCurrentLocation().transform.position);
+            agent.SetDestination(targetManager.GetCurrentLocation().GetWaypoints()[0].position);
         }
     }
     public override void UpdateState() {
@@ -23,7 +24,7 @@ public class TravelingState : HunterState
             if(hunterRegionInfo.Region == targetManager.GetCurrentLocation())
                 StateMachine.SetState(HunterStateType.Searching);
             else{
-                agent.SetDestination(targetManager.GetCurrentLocation().transform.position);
+                agent.SetDestination(targetManager.GetCurrentLocation().GetWaypoints()[0].position);
             }
         }
     }

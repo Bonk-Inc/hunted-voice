@@ -8,16 +8,17 @@ public class TargetManager : MonoBehaviour
     private HunterStateMachine stateMachine;
 
     private CitizenInfo citizenInfo;
-
+    [SerializeField]
     private GameObject currentTarget;
     public GameObject CurrentTarget{get{return currentTarget;} 
     set{ChangeTarget(value);}}
 
-    private void Start(){
-        currentTarget = PlayerSingleton.Instance.CurrentPlayer;
-    }
-    
+    [SerializeField]
+    private Region backupRegion;
+
     public Region GetCurrentLocation(){
+        if(RetrieveObjectRegionInfo().Region == null)
+            return backupRegion;
         return RetrieveObjectRegionInfo().Region;
     }
 
