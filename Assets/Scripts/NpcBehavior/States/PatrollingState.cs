@@ -22,7 +22,7 @@ public class PatrollingState : CitizenState {
     private bool wasBeingpossessed = false;
 
     public override void EnterState() {
-        //suspision.StartWatching();
+        suspision.StartWatching();
         SetDestination();
     }
 
