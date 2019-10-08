@@ -16,6 +16,10 @@ public class TargetManager : MonoBehaviour
     [SerializeField]
     private Region backupRegion;
 
+    private void Awake(){
+        citizenInfo = currentTarget.GetComponent<CitizenInfo>();    
+    }
+
     public Region GetCurrentLocation(){
         if(RetrieveObjectRegionInfo().Region == null)
             return backupRegion;
@@ -34,12 +38,12 @@ public class TargetManager : MonoBehaviour
     }
 
     public GameObject GetNewTarget(){
-        return citizenInfo.NewTarget;
+        return citizenInfo?.NewTarget;
     }
 
-    private void ChangeTarget(GameObject newtarget){
-        currentTarget = newtarget;
-        citizenInfo = newtarget.GetComponent<CitizenInfo>();
+    private void ChangeTarget(GameObject newTarget){
+        currentTarget = newTarget;
+        citizenInfo = newTarget?.GetComponent<CitizenInfo>();
         RetrieveObjectRegionInfo().OnRegionChanged -= stateMachine.CurrentState.ChangeRegion;
     }
 }
