@@ -27,7 +27,7 @@ public class PatrollingState : CitizenState {
     }
 
     public override void LeaveState() {
-        //suspision.StopWatching();
+        suspision.StopWatching();
     }
 
     public override void UpdateState() {

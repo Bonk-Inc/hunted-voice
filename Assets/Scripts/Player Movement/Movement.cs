@@ -18,13 +18,13 @@ public class Movement : MonoBehaviour {
                 return;
 
             isMoving = value;
-            IsMovingChaned?.Invoke(value);
+            IsMovingChanged?.Invoke(value);
         }
     }
 
     public float Speed { get => speed; set => speed = value; }
 
-    public event Action<bool> IsMovingChaned;
+    public event Action<bool> IsMovingChanged;
 
     public void Move(Vector3 direction) {
         IsMoving = direction != Vector3.zero;
